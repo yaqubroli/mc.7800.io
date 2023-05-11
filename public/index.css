@@ -1,0 +1,393 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Make .App div span the entire page */
+.App {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.BGElem {
+  position: absolute;
+  z-index: -2; /* This ensures the div is positioned below the content */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 60% 60%;
+  background-position: center;
+}
+
+.BGElem-0 {
+  background-image: url("/img/grid.gif");
+}
+
+.BGElem-1 {
+  background-image: url("/img/future.png");
+}
+
+.BGElem-2 {
+  background-image: url("/img/gucci.jpg");
+}
+
+.BGOverlay {
+  display: none;
+}
+
+.BGOverlay-tendencies {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* tiling background of /img/swiss.png, constantly moving */
+  background-size: 128px auto;
+  background-repeat: repeat-x;
+  opacity: 0.8;
+}
+
+.BGOverlay-top {
+  top: 25%;
+  bottom: 0;
+  transform: scale(1.5) perspective(1000px) rotateX(-20deg);
+  animation: marquee-128px 2s linear infinite;
+}
+
+.BGOverlay-bottom {
+  top: 75%;
+  bottom: 0;
+  transform: scale(1.5) perspective(1000px) rotateX(20deg);
+  animation: marquee-128px 2s linear infinite reverse;
+}
+
+.BGOverlay-0 {
+  background-image: url("/img/swiss.png");
+}
+
+.BGOverlay-1 {
+  background-image: url("/img/sigma.jpg");
+}
+
+.BGOverlay-2 {
+  background-image: url("/img/haidilao.jpg");
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -1px 0px 0px 0px cyan, 1px 0px 0px 0px pink;
+  }
+  25% {
+    text-shadow: 1px -1px 0px 0px cyan, -1px 1px 0px 0px pink;
+  }
+  50% {
+    text-shadow: 1px 0px 0px 0px cyan, -1px 0px 0px 0px pink;
+  }
+  75% {
+    text-shadow: -1px 1px 0px 0px cyan, 1px -1px 0px 0px pink;
+  }
+  100% {
+    text-shadow: -1px 0px 0px 0px cyan, 1px 0px 0px 0px pink;
+  }
+}
+
+@keyframes marquee-128px {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 128px 0;
+  }
+}
+
+/* Style .MainDiv div with a centered, rounded, grey background and dark grey border */
+.MainDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Grey background */
+  border: 2px solid #808080; /* Dark grey border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+}
+
+.MainDiv h1 {
+  text-align: center;
+  flex: none;
+  animation: sigmoid-motion 2s linear infinite;
+  max-width: 8em;
+}
+
+.MainDiv-2 h1 {
+  font-size: medium;
+}
+
+@keyframes sigmoid-motion {
+  0% {
+    transform: translateY(calc(20px * sin(0)));
+    text-shadow: 0 0 magenta, 0 0 cyan;
+  }
+  10% {
+    transform: translateY(calc(20px * sin(0.628)));
+    text-shadow: 0 calc(20px * sin(0)) magenta, 0 calc(20px * sin(0.314)) cyan;
+  }
+  20% {
+    transform: translateY(calc(20px * sin(1.256)));
+    text-shadow: 0 calc(20px * sin(0.628)) magenta, 0 calc(20px * sin(0.942)) cyan;
+  }
+  30% {
+    transform: translateY(calc(20px * sin(1.884)));
+    text-shadow: 0 calc(20px * sin(0.942)) magenta, 0 calc(20px * sin(1.256)) cyan;
+  }
+  40% {
+    transform: translateY(calc(20px * sin(2.512)));
+    text-shadow: 0 calc(20px * sin(1.256)) magenta, 0 calc(20px * sin(1.57)) cyan;
+  }
+  50% {
+    transform: translateY(calc(20px * sin(3.14)));
+    text-shadow: 0 calc(20px * sin(1.57)) magenta, 0 calc(20px * sin(1.884)) cyan;
+  }
+  60% {
+    transform: translateY(calc(20px * sin(3.768)));
+    text-shadow: 0 calc(20px * sin(1.884)) magenta, 0 calc(20px * sin(2.198)) cyan;
+  }
+  70% {
+    transform: translateY(calc(20px * sin(4.396)));
+    text-shadow: 0 calc(20px * sin(2.198)) magenta, 0 calc(20px * sin(2.512)) cyan;
+  }
+  80% {
+    transform: translateY(calc(20px * sin(5.024)));
+    text-shadow: 0 calc(20px * sin(2.512)) magenta, 0 calc(20px * sin(2.826)) cyan;
+  }
+  90% {
+    transform: translateY(calc(20px * sin(5.652)));
+    text-shadow: 0 calc(20px * sin(2.826)) magenta, 0 calc(20px * sin(3.14)) cyan;
+  }
+  100% {
+    transform: translateY(calc(20px * sin(6.28)));
+    text-shadow: 0 0 magenta, 0 0 cyan;
+  }
+}
+
+@keyframes sigmoid-motion-modified {
+  0% {
+    transform: translateY(calc(20px * sin(0) + 20px));
+  }
+  10% {
+    transform: translateY(calc(20px * sin(0.628) + 20px));
+  }
+  20% {
+    transform: translateY(calc(20px * sin(1.256) + 20px));
+  }
+  30% {
+    transform: translateY(calc(20px * sin(1.884) + 20px));
+  }
+  40% {
+    transform: translateY(calc(20px * sin(2.512) + 20px));
+  }
+  50% {
+    transform: translateY(calc(20px * sin(3.14) + 20px));
+  }
+  60% {
+    transform: translateY(calc(20px * sin(3.768) + 20px));
+  }
+  70% {
+    transform: translateY(calc(20px * sin(4.396) + 20px));
+  }
+  80% {
+    transform: translateY(calc(20px * sin(5.024) + 20px));
+  }
+  90% {
+    transform: translateY(calc(20px * sin(5.652) + 20px));
+  }
+  100% {
+    transform: translateY(calc(20px * sin(6.28) + 20px));
+  }
+}
+
+#yaqub {
+  font-size: x-small;
+}
+
+.main-button-style {
+  /* dark grey background, block element, rounded corners, white text, thin black border */
+  background-color: #808080;
+  display: block;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  /* center text */
+  text-align: center;
+  width: 13em;
+  height: 3em;
+  /* vertically center text */
+  line-height: 3em;
+}
+
+/* button turns dark red on hover */
+.main-button-style:hover {
+  background-color: #800000;
+}
+
+.AudioPlayer {
+  display: none;
+}
+
+/* make #settings-pane same width and appearance as the buttons */
+.SettingsPane {
+  width: 13em;
+  background-color: #808080;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  /* center text */
+  text-align: center;
+}
+
+.SettingsPane h3 {
+  /* no weird marings or paddings */
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.SettingsPane li {
+  /* remove bullet points */
+  list-style-type: none;
+  /* center text */
+  text-align: center;
+}
+
+.SettingsPane button {
+  display: inline-block;
+  height: 2em;
+  margin-bottom: 0.5em;
+  /* light grey background, black thin border, rounded corners */
+  background-color: #333;
+}
+
+.MouseFollower {
+  position: absolute;
+  z-index: 20;
+}
+
+.Gatito {
+  /* make the cat image float on top of the entire page, positioned at the bottom left corner */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  min-width: 20%;
+  max-width: 30%;
+}
+
+.Gatito-tendencies {
+  animation: sigmoid-motion-modified 2s linear infinite;
+}
+
+.text-mouse-spooler-span {
+  position: absolute;
+  z-index: 20;
+  /* yellow text with black drop shadow */
+  color: yellow;
+  text-shadow: 2px 2px 1px black;
+  /* no weird margins or paddings */
+  margin: 0;
+  padding: 0;
+  animation: text-mouse-spooler-span-animation 1s linear forwards;
+}
+
+/* css animation for text-mouse-spooler-span where it rises up, grows slightly, and vanishes (opacity) */
+
+@keyframes text-mouse-spooler-span-animation {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.TextMouseSpooler {
+  /* float on top of the entire page, screen spanning div, overlay, no pointer events */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+button {
+  height: 2em;
+  background-color: #808080;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  margin-left: 5px;
+}
+
+button:hover {
+  background-color: #800000;
+}
+
+/* server-url and copy-button are both in the div with classname ClipboardCopy, server-url takes up 75% of the space horizontally */
+
+.ClipboardCopy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* height of div is 3em */
+  height: 3em;
+}
+
+.ClipboardCopy input {
+  width: 80%;
+  /* snap to height of div */
+  height: 2.3em;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding-left: 10px;
+  /* large monospace text, inset shadow */
+  font-family: monospace;
+  font-size: large;
+  box-shadow: inset 0 0 10px black;
+  /* grey backgronud, white text */
+  background-color: #333;
+  color: white;
+}
+
+.ClipboardCopy button {
+  width: 20%;
+  /* snap to height of div */
+  height: 3em;
+}
