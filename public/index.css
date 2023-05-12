@@ -131,15 +131,26 @@ code {
   padding: 20px;
 }
 
+.MainUI {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .MainDiv h1 {
   text-align: center;
   flex: none;
-  animation: sigmoid-motion 2s linear infinite;
   max-width: 8em;
 }
 
 .MainDiv-2 h1 {
   font-size: medium;
+}
+
+.MainDiv-tendencies h1 {
+  animation: sigmoid-motion 2s linear infinite;
 }
 
 @keyframes sigmoid-motion {
@@ -262,7 +273,7 @@ code {
   border-radius: 10px;
   color: white;
   border: 1px solid black;
-  padding: 10px;
+  padding: 2px;
   margin: 10px;
   /* center text */
   text-align: center;
@@ -272,7 +283,6 @@ code {
   /* no weird marings or paddings */
   margin: 0;
   padding: 0;
-  padding-bottom: 10px;
   text-transform: uppercase;
 }
 
@@ -281,19 +291,23 @@ code {
   list-style-type: none;
   /* center text */
   text-align: center;
+  margin: none;
+  margin-bottom: 2px;
+  font-size: small;
 }
 
 .SettingsPane button {
   display: inline-block;
   height: 2em;
-  margin-bottom: 0.5em;
   /* light grey background, black thin border, rounded corners */
   background-color: #333;
+  font-size: small;
 }
 
 .MouseFollower {
   position: absolute;
   z-index: 20;
+  pointer-events: none;
 }
 
 .Gatito {
@@ -304,6 +318,7 @@ code {
   z-index: 10;
   min-width: 20%;
   max-width: 30%;
+  pointer-events: none;
 }
 
 .Gatito-tendencies {
@@ -390,4 +405,25 @@ button:hover {
   width: 20%;
   /* snap to height of div */
   height: 3em;
+}
+
+.WhitelistUI label {
+  display: block;
+  text-align: center;
+}
+
+.WhitelistUI input {
+  margin-left: 5px;
+}
+
+#with-sta-email {
+  padding: 5px;
+  margin: 10px;
+  border: 1px dotted gray;
+}
+
+#without-sta-email {
+  padding: 5px;
+  margin: 10px;
+  border: 1px dotted gray;
 }

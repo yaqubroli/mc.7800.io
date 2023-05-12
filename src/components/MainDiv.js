@@ -3,8 +3,13 @@ import ClipboardCopy from './ClipboardCopy';
 import PrankButton from './PrankButton';
 import SettingsPane from './SettingsPane';
 import getClassName from '../utils/getClassName';
+import MainUI from './MainUI';
+import WhitelistUI from './WhitelistUI';
 
-function MainDiv({ mode, characteristics, tendencies, setMode, setCharacteristics, setTendencies, mousePosition, windowSize, audio }) {
+function MainDiv({ mode, characteristics, tendencies, joinWhitelist, setMode, setCharacteristics, setTendencies, setJoinWhitelist, mousePosition, windowSize, audio }) {
+
+  const [whitelistUI, setWhitelistUI] = React.useState(false);
+
   return (
     <div
       className={getClassName("MainDiv", mode, characteristics, tendencies)}
@@ -16,35 +21,18 @@ function MainDiv({ mode, characteristics, tendencies, setMode, setCharacteristic
           ,
       }}
     >
-      <div id="wrap">
-      <h1>{
-        mode === 0 ? "Swiss Town" :  
-        mode === 1 ? "Sigma Town" : 
-        mode === 2 ? "爱国华为官小分红习近平思想讨论组"
-        : "Error"}
-      </h1>
-      </div>
-      <h2>Server IP:</h2>
-      <ClipboardCopy 
-        copyText={"mc.7800.io"}
-        tendencies={tendencies}
-        characteristics={characteristics}
-        audio={audio}
-        mousePosition={mousePosition}
-      />
-      <small id="ip-tagline">version 1.19.4, port 25565</small>
-      <a className="main-button-style" href="/whitelist">Join the whitelist</a>
-      <PrankButton characteristics={characteristics} audio={audio}/>
-      <SettingsPane
+      { whitelistUI ? <WhitelistUI /> :
+      <MainUI
         mode={mode}
         characteristics={characteristics}
         tendencies={tendencies}
+        joinWhitelist={whitelistUI}
         setMode={setMode}
         setCharacteristics={setCharacteristics}
         setTendencies={setTendencies}
+        setWhitelistUI={setWhitelistUI}
         audio={audio}
-      />
-      <a id="yaqub" href="https://yaqubro.li">made on the island of patmos 6,600 years ago</a>
+      /> }
     </div>
   );
 }

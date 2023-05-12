@@ -30,6 +30,7 @@ function App() {
   const [mode, setMode] = useState(0);
   const [characteristics, setCharacteristics] = useState(true);
   const [tendencies, setTendencies] = useState(true);
+  const [joinWhitelist, setJoinWhitelist] = useState(false);
 
   const mousePosition = useMousePosition();
   const windowSize = useWindowSize();
@@ -49,6 +50,12 @@ function App() {
         (mode === 1 && characteristics) ? false : true
         }>
         <source src="/mp3/maskoff.mp3" type="audio/mpeg" />
+      </audio> : null}
+      {mode === 2 ?
+      <audio autoPlay={true} loop={true} muted={
+        (mode === 2 && characteristics) ? false : true
+        }>
+        <source src="/mp3/jiafei.mp3" type="audio/mpeg" />
       </audio> : null}
       <BGElem
         mode={mode}
@@ -77,20 +84,22 @@ function App() {
         mode={mode}
         characteristics={characteristics}
         tendencies={tendencies}
+        joinWhitelist={joinWhitelist}
         setMode={setMode}
         setCharacteristics={setCharacteristics}
         setTendencies={setTendencies}
+        setJoinWhitelist={setJoinWhitelist}
         mousePosition={mousePosition}
         windowSize={windowSize}
         audio={vineboom}
       />
-      <MouseFollower
+      { tendencies ? <MouseFollower
         mode={mode}
         characteristics={characteristics}
         tendencies={tendencies}
         mousePosition={mousePosition}
         windowSize={windowSize}
-      />
+      /> : null}
       <Gatito
         mode={mode}
         characteristics={characteristics}
